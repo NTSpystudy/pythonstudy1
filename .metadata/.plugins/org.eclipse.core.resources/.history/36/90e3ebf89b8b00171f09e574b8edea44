@@ -26,7 +26,7 @@ senderPw = "naver!23"
 
 tmpTime = ""
 
-driver = webdriver.Chrome("C:\selenium\chromedriver.exe!!")
+driver = webdriver.Chrome("C:\selenium\chromedriver.exe")
 
 def logIn(Id, Pw):
     driver.find_element_by_xpath("//*[@id='container']/div/div[2]/div[1]/div/a/span").click()

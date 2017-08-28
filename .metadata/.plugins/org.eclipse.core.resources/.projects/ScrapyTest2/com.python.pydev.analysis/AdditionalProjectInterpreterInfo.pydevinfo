@@ -1,0 +1,23 @@
+-- VERSION_4
+-- START DISKCACHE_2
+C:\Users\NAVER\Documents\pythonstudy1\.metadata\.plugins\org.eclipse.core.resources\.projects\ScrapyTest2\com.python.pydev.analysis\v2_indexcache
+mailTest|1503886794900790000|C:\Users\NAVER\Documents\pythonstudy1\ScrapyTest2\mailTest.py
+-- END DISKCACHE
+-- START DICTIONARY
+1
+1=mailTest
+-- END DICTIONARY
+-- START TREE 1
+8
+bas|1|basicWriting!10@
+dri|1|driver!11@
+log|2|logOut!10@logIn!10@
+mak|1|makeConversation!10@
+rec|3|receiver!11@receiverId!11@receiverPw!11@
+sen|3|senderId!11@senderPw!11@sender!11@
+tmp|1|tmpTime!11@
+wai|1|waitForIsElementPresent!10@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

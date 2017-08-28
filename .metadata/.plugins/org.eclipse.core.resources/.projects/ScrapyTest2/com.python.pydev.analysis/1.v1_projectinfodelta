@@ -1,0 +1,17 @@
+INSTUPmailTest
+C:\Users\NAVER\Documents\pythonstudy1\ScrapyTest2\mailTest.py
+INFOS:&&3|1|2|0&&3|3|2|0&&3|4|2|0&&3|5|2|0&&3|6|2|0&&3|7|2|0&&3|8|2|0&&3|9|2|0&&2|10|2|0&&2|11|2|0&&2|12|2|0&&2|13|2|0&&2|14|2|0
+tmpTime=8
+waitForIsElementPresent=12
+receiver=1
+mailTest=2
+logIn=10
+receiverPw=6
+senderId=5
+receiverId=4
+driver=9
+sender=3
+logOut=11
+makeConversation=14
+senderPw=7
+basicWriting=13

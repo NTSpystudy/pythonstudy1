@@ -13,8 +13,6 @@ from operator import eq
 
 import time
 
-## what can i say except you're welcome
-
 receiver = "test_lee3@naver.com"
 sender = "test_lee2@naver.com"
 
@@ -26,7 +24,7 @@ senderPw = "naver!23"
 
 tmpTime = ""
 
-driver = webdriver.Chrome("C:\selenium\chromedriver.exe!!")
+driver = webdriver.Chrome("C:\selenium\chromedriver.exe")
 
 def logIn(Id, Pw):
     driver.find_element_by_xpath("//*[@id='container']/div/div[2]/div[1]/div/a/span").click()
