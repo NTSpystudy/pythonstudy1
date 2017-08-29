@@ -1,6 +1,6 @@
 # -*- coding: cp949 -*-
 
-import requests
+import request
 from bs4 import BeautifulSoup
 import urllib
 
