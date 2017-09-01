@@ -2,7 +2,7 @@ import random
 
 import html
 import urllib.request
-import lxml
+import re
 from bs4 import BeautifulSoup as BS
 
 from operator import eq
@@ -12,6 +12,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 import time
+
+user_agent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
 
 
 def download_web_images(url):
@@ -26,8 +28,6 @@ def download_web_images(url):
 
 
 def download_web_images_no_extension(url):
-    user_agent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
-
     name = random.randrange(1, 1001)
     f = open("./img/" + str(name) + ".jpg", "wb");
     img_req = urllib.request.Request(url, data=None, headers={'User-Agent': user_agent});
@@ -41,11 +41,11 @@ def download_web_images_no_extension(url):
     # f.close()
 
 def download_web_images_noExtension(url):
-
     name = random.randrange(1, 1001)
     f = open( "./img/" + str(name) + '.jpg', 'wb')
     f.write(urllib.request.urlopen(url).read())
     f.close()
+
 
 def find_by_xpath(element_source,xpath_expression):
     root = html.fromstring(element_source)
@@ -81,29 +81,35 @@ if __name__ == "__main__":
                 driver.get(url_info)
                 soup = BS(driver.page_source, 'html.parser')
 
-                li = soup.find_all("li")
+                imgs = soup.findAll("img" , {"src" : re.compile('dcimg.[.]')})
                 print(1)
 
-                for ele in li:
+                for img in imgs:
                     print(2)
-                    val = ele.get('class')
-                    if val != None and val[0] == 'icon_pic':
-                        print(3)
-                        base_url = ele.a.get("href")
-                        rp_from = "http://image.dcinside.com/download.php"
-                        rp_to = "http://dcimg7.dcinside.com/viewimage.php"
-                        base_url = base_url.replace(rp_from, rp_to);
-                        print(base_url)
-                        f = open("./img/" + ele.a.contents[0], "wb");
-                        img_req = urllib.request.Request(base_url);
-                        f.write(urllib.request.urlopen(img_req).read())
-                        f.close()
+                    imgUrl = img.get("src")
+                    download_web_images_noExtension(imgUrl)
+
+
+
+                # for ele in li:
+                #     print(2)
+                #     val = ele.get('class')
+                #     if val != None and val[0] == 'icon_pic':
+                #         print(3)
+                #         base_url = ele.a.get("href")
+                #         rp_from = "http://image.dcinside.com/download.php"
+                #         rp_to = "http://dcimg7.dcinside.com/viewimage.php"
+                #         base_url = base_url.replace(rp_from, rp_to);
+                #         print(base_url)
+                #         f = open("./img/" + ele.a.contents[0] + ".jpg", "wb");
+                #         img_req = urllib.request.Request(base_url, data=None, headers={'User-Agent': user_agent});
+                #         f.write(urllib.request.urlopen(img_req).read())
+                #         f.close()
 
         except UnicodeEncodeError:
             print("Error : " + str(idx))
         finally:
             idx += 1
-
 
 
 
