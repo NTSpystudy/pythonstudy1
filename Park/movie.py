@@ -20,8 +20,6 @@ def getMovies(url):
     
     try:
         bsObj = BeautifulSoup(html.read(), "html.parser")
-        #for title in bsObj.findAll("dt"):
-        #	print(title.a['title'])
         movies = bsObj.find('ul',attrs={'class':'prize_list'}).findAll('li')
     except AttributeError as e:
         return None
