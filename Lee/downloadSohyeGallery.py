@@ -13,43 +13,37 @@ from selenium.webdriver.support import expected_conditions as EC
 
 import time
 
-user_agent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
-
-
-def download_web_images(url):
-    user_agent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
-
-    name = random.randrange(1,1001)
-    full_name = str(name) + ".jpg"
-
-    img_req = urllib.request.Request(url, data=None, headers={'User-Agent': user_agent});
-    urllib.request.urlretrieve(img_req, "./img/" + full_name)
 
 
 
-def download_web_images_no_extension(url):
-    name = random.randrange(1, 1001)
-    f = open("./img/" + str(name) + ".jpg", "wb");
-    img_req = urllib.request.Request(url, data=None, headers={'User-Agent': user_agent});
-
-    f.write(urllib.request.urlopen(img_req).read())
-    f.close()
-
-    #
-    # f = open( "./img/" + str(name) + '.jpg', 'wb')
-    # f.write(urllib.request.urlopen(url).read())
-    # f.close()
-
-def download_web_images_noExtension(url):
-    name = random.randrange(1, 1001)
-    f = open( "./img/" + str(name) + '.jpg', 'wb')
-    f.write(urllib.request.urlopen(url).read())
-    f.close()
-
-
-def find_by_xpath(element_source,xpath_expression):
-    root = html.fromstring(element_source)
-    return root.xpath(xpath_expression)
+# def download_web_images(url):
+#
+#     name = random.randrange(1,1001)
+#     full_name = str(name) + ".jpg"
+#
+#     img_req = urllib.request.Request(url, data=None, headers={'User-Agent': user_agent});
+#     urllib.request.urlretrieve(img_req, "./img/" + full_name)
+#
+#
+#
+# def download_web_images_no_extension(url):
+#     name = random.randrange(1, 1001)
+#     f = open("./img/" + str(name) + ".jpg", "wb");
+#     img_req = urllib.request.Request(url, data=None, headers={'User-Agent': user_agent});
+#
+#     f.write(urllib.request.urlopen(img_req).read())
+#     f.close()
+#
+#     #
+#     # f = open( "./img/" + str(name) + '.jpg', 'wb')
+#     # f.write(urllib.request.urlopen(url).read())
+#     # f.close()
+#
+# def download_web_images_noExtension(url):
+#     name = random.randrange(1, 1001)
+#     f = open( "./img/" + str(name) + '.jpg', 'wb')
+#     f.write(urllib.request.urlopen(url).read())
+#     f.close()
 
 
 
@@ -87,7 +81,17 @@ if __name__ == "__main__":
                 for img in imgs:
                     print(2)
                     imgUrl = img.get("src")
-                    download_web_images_noExtension(imgUrl)
+                    print(imgUrl)
+
+                    name = random.randrange(1, 1001)
+
+                    f = open("./img/" + str(name) + ".jpg", "wb");
+
+                    user_agent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+
+                    img_req = urllib.request.Request(imgUrl);
+                    f.write(urllib.request.urlopen(img_req).read().encode())
+                    f.close()
 
 
 
