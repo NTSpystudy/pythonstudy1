@@ -10,7 +10,6 @@ def main():
     account_book  = read_file("./account_book.csv") #account_book = month income food_expenses
     save_the_new_file(account_book,"./account_book1.csv")#파일이 변해버리는 것을 대비해서 파일명을 일부러 다르게 해두었습니다
     
-    print(account_book)
     account_book = np.array(account_book)
     
     month = account_book[: ,0]
@@ -18,8 +17,9 @@ def main():
     food_expenses = account_book[: ,2]
     
     engels_coefficient = calculate_engel_coefficient(income,food_expenses)
+    print(engels_coefficient)
     
-    visualize_month_by_engel(month,engels_coefficient)
+    visualize_month_by_engel(month,engels_coefficient,"Month","Engel's coefficient")
     
 def read_file(file_name):#파일을 읽어와서 각 원소를 integer형으로 변환해 list 화하여 반환함 단!! 읽어옴과 동시에 새로운 데이터가 있다면 입력하도록 함
     account_book = []
@@ -45,9 +45,11 @@ def save_the_new_file(account_book,file_name):#input이 추가되어 새롭게 �
 def calculate_engel_coefficient(income,food_expenses):#엥겔지수 계산 함수
     return food_expenses/income
 
-def visualize_month_by_engel(x,y):
+def visualize_month_by_engel(x,y,x_label,y_label):
     fig =plt.figure(figsize=(10,6))
     fig.suptitle("Month by engel's Coefficient")
+    plt.xlabel(x_label,fontsize='15')
+    plt.ylabel(y_label,fontsize='15')
     
     plt.scatter(x,y)
     plt.plot(x,y,linestyle = "--",linewidth = 3.0)
