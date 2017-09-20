@@ -5,13 +5,13 @@ def birthdayCakeCandles(n, ar):
     for candle in ar:
         if top_candle < candle:
             top_candle = candle
-            top_candle_number = 0
+            top_candle_number = 1
         elif top_candle == candle:
             top_candle_number += 1
         else:
             continue
 
-    return top_candle_number + 1
+    return top_candle_number
 
 n = int(input().strip())
 ar = list(map(int, input().strip().split(' ')))
