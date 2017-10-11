@@ -10,7 +10,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from operator import eq
-from bs4 import BeautifulSoup as BS
 import urllib.request
 
 import time
@@ -101,7 +100,7 @@ if __name__ == "__main__":
 
     driver.get("http://mail.naver.com")
     logIn(senderId, senderPw)
-    searchCAPTCHA(1000)
+    searchCAPTCHA(10)
     driver.close()
 
 
