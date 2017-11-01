@@ -36,6 +36,3 @@ for i, one_img in enumerate(pool_img):
     plt.subplot(1,5,i+1), plt.imshow(one_img.reshape(7,7),cmap='gray')
 
 plt.show()
-
-
-plt.show()
